@@ -4,7 +4,7 @@ import { readTextFile } from "./utils/file-reader";
 import "./App.css";
 
 function App() {
-  useLaunchQueue(async (launchParams) => {
+  const [isSupported] = useLaunchQueue(async (launchParams) => {
     if (launchParams.files && launchParams.files.length > 0) {
       try {
         const file = await launchParams.files[0].getFile();
@@ -29,6 +29,7 @@ function App() {
   return (
     <>
       <h1>OpenAttestation</h1>
+      <p>File Handling API support: {isSupported === true ? `✅` : `❌`}</p>
     </>
   );
 }
